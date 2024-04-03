@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 import auth from './firebase.config';
 
@@ -54,7 +56,11 @@ const App = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+          <input
+           type={ showPassword? "text" : "password"}
+            name='password' 
+            placeholder="password" className="input input-bordered relative" required />
+          <span className='absolute right-12 top-44 cursor-pointer text-xl font-bold' onClick={()=>setShowPassword(!showPassword)}>{showPassword?<FaEye />:<FaRegEyeSlash />}</span>
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
